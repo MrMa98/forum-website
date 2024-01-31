@@ -159,7 +159,6 @@ const onFinish = (values: LoginFormState) => {
     .then((response) => {
       const { token, message, data } = response as unknown as { token: string, message: string, data: Users };
       if (token) {
-        delete data.password;
         store.$patch({userInfoData: data});
         localStorage.setItem('token', token);
         router.push({ path: '/home', replace: true });

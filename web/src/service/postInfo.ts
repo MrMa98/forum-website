@@ -22,3 +22,7 @@ export function updatePostById(params: UpdatePostInfo) {
 export function deletePostById(id: string) {
   return http.get(`/api/postinfo/delete?id=${id}`)
 }
+
+export function getPostByHottest() {
+  return http.get(`/api/postinfo/findhot`)
+}

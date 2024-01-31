@@ -2,8 +2,6 @@
 import Editor from '@tinymce/tinymce-vue'
 
 const callback = (_request: unknown, respondWith: { string: (arg0: () => Promise<never>) => unknown; }) => {
-  console.log(_request, respondWith);
-
   respondWith.string(() => Promise.reject("See docs to implement AI Assistant"))
 };
 const textValue = defineModel();

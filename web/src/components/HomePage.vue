@@ -26,7 +26,7 @@
                 <menu-unfold-outlined v-if="collapsed" class="trigger" @click="() => (collapsed = !collapsed)" />
                 <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
                 <div class="hottest-omments">
-                    <div class="animated-text">这是一行从左到右的动画文字</div>
+                    <div class="animated-text">{{ animationValue }}</div>
                 </div>
                 <div class="count-down">
                     <a-statistic-countdown class="day-level" :value="deadline" format="D 天 H 时 m 分 s 秒" />
@@ -50,13 +50,19 @@ import {
 import { fadeColorMap } from '../untils/fadeColor';
 import { useUserInfoStore } from '@/stores/userInfo';
 import router from '@/router';
+import { getPostByHottest } from '@/service/postInfo';
 const selectedKeys = ref<string[]>(['post']);
 const collapsed = ref<boolean>(false);
 const userInfoStore = useUserInfoStore().userInfoData;
+let animationValue = ref<string>('');
+let count = ref<number>(0);
+let time: number | undefined;
+const now = new Date();
+const currentHour = now.getHours();
 
 const color = fadeColorMap.get(204);
 /** 倒计时 */
-const deadline = new Date(new Date().getFullYear() + 1, 0, 1, 0, 0, 0, 0).getTime();
+const deadline = new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0, 0).getTime();
 
 const fontColor = reactive({
     background: `linear-gradient(to right, ${color.start}, ${color.end})`,
@@ -66,14 +72,54 @@ const fontColor = reactive({
     display: 'inline - block',
 })
 watch(selectedKeys, (newVal) => {
-  navigateToNewPath(newVal[0]);
+    navigateToNewPath(newVal[0]);
 });
 
 const navigateToNewPath = (selectedKeys: string | null) => {
-  if (selectedKeys) {
-    router.push(`/home/${selectedKeys}`);
-  }
+    if (selectedKeys) {
+        router.push(`/home/${selectedKeys}`);
+    }
 };
+
+const modern = () => {
+    switch (true) {
+        case currentHour >= 6 && currentHour < 12:
+            return '早上好';
+        case currentHour >= 12 && currentHour < 14:
+            return '中午好';
+        case currentHour >= 14 && currentHour < 18:
+            return '下午好';
+        case currentHour >= 18 && currentHour < 24:
+            return '晚上好';
+        default:
+            return '深夜好';
+    }
+};
+
+function fetchPostInfoHotData() {
+    animationValue.value = (`${modern()}，${userInfoStore.nickname}`);
+    return getPostByHottest().then(res => res.data);
+}
+
+onMounted(() => {
+    fetchPostInfoHotData().then((data) => {
+        function updateAnimationValue() {
+            if (count.value === 10) {
+                count.value = 0;
+            }
+            animationValue.value = data[count.value].post_caption;
+            count.value += 1;
+            time = setTimeout(updateAnimationValue, 12000);
+        }
+
+        time = setTimeout(updateAnimationValue, 12000);
+    });
+})
+
+onUnmounted(() => {
+    clearTimeout(time)
+})
+
 </script>
 <style lang="less">
 #components-layout-demo-custom-trigger .trigger {
@@ -135,19 +181,20 @@ const navigateToNewPath = (selectedKeys: string | null) => {
     overflow: hidden;
 
     @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(calc(100vw - 490px));
-      }
+        from {
+            transform: translateX(-100%);
+        }
+
+        to {
+            transform: translateX(calc(100vw - 490px));
+        }
     }
 
     .animated-text {
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      animation: slideIn 12s ease-in-out infinite;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: slideIn 12s ease-in-out infinite;
     }
 }
 

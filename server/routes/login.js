@@ -6,7 +6,7 @@ const { JWTPUBLICKEY } = require('../config/config');
 const { SUCCESS, ACCOUNTPASSWORDMISMATCH } = require('../error/codeCollection');
 
 router.post('/login', function (req, res, next) {
-  UserModel.findOne({ username: req.body.username, password: req.body.password}).then(user => {
+  UserModel.findOne({ username: req.body.username, password: req.body.password}, {password: 0}).then(user => {
     if (user) {
       const token = jwt.sign({ _id: user._id }, JWTPUBLICKEY);
       req.session.username = user.username;
