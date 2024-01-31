@@ -4,7 +4,7 @@
 
 后续可能会有@评论回复等其它功能、后续后端可能用Golang重写
 
-该项目主要是为了熟悉vue3，如果有同学想用来做毕业设计可以找我，免费帮忙
+该项目主要是为了熟悉vue3，如果有同学想用来做毕业设计可以找我，免费帮忙（技术栈： vue、angular、node。皮毛：Golang、微信小程序）
 
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/401a2d49-dbba-4104-84d7-cd54a37b7cb3)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/dd3ea58d-c048-441b-908b-fd8eaeb00347)
