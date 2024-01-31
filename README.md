@@ -1,4 +1,3 @@
-![image](https://github.com/MrMa98/forum-website/assets/73485208/bc7efe47-fabf-4a26-9597-4a930d623b1b)# laughing-octo-fortnight
 基于vue3、antdv、node、mongodb的项目
 目前功能就是用户登录，登陆状态，话题的发布、修改、删除、搜索等基础功能
 后续可能会有@评论回复等功能
