@@ -54,7 +54,7 @@
     chalk "^2.4.2"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.15.8", "@babel/parser@^7.23.6":
+"@babel/parser@^7.15.8", "@babel/parser@^7.23.5", "@babel/parser@^7.23.6":
   version "7.23.6"
   resolved "https://registry.npmmirror.com/@babel/parser/-/parser-7.23.6.tgz"
   integrity sha512-Z2uID7YJ7oNvAI20O9X0bblw7Qqs8Q2hFy0R9tAfnfLkp5MW0UH9eUvnDSnFwKZ0AvgS1ucqR4KzvVHgnke1VQ==
@@ -323,6 +323,14 @@
   resolved "https://registry.npmmirror.com/@types/tough-cookie/-/tough-cookie-4.0.5.tgz"
   integrity sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==
 
+"@types/vue-moment@^4.0.7":
+  version "4.0.7"
+  resolved "https://registry.npmjs.org/@types/vue-moment/-/vue-moment-4.0.7.tgz"
+  integrity sha512-TnUjdkNLErTWTbaAWya+5g+z3HrowYCmsppviM9ciPN+v5ENklGfPtG7iAt4NeZ9C+b7ESPy+KZDuNSAvbUaBQ==
+  dependencies:
+    moment ">=2.24.0"
+    vue "^2.6.10"
+
 "@typescript-eslint/eslint-plugin@^6.18.1":
   version "6.18.1"
   resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.18.1.tgz"
@@ -503,6 +511,17 @@
   dependencies:
     "@vue/compiler-core" "3.4.15"
     "@vue/shared" "3.4.15"
+
+"@vue/compiler-sfc@2.7.16":
+  version "2.7.16"
+  resolved "https://registry.npmjs.org/@vue/compiler-sfc/-/compiler-sfc-2.7.16.tgz"
+  integrity sha512-KWhJ9k5nXuNtygPU7+t1rX6baZeqOYLEforUPjgNDBnLicfHCoi48H87Q8XyLZOrNNsmhuwKqtpDQWjEFe6Ekg==
+  dependencies:
+    "@babel/parser" "^7.23.5"
+    postcss "^8.4.14"
+    source-map "^0.6.1"
+  optionalDependencies:
+    prettier "^1.18.2 || ^2.0.0"
 
 "@vue/compiler-sfc@3.4.15":
   version "3.4.15"
@@ -1110,7 +1129,7 @@ cssstyle@^4.0.1:
   dependencies:
     rrweb-cssom "^0.6.0"
 
-csstype@^3.1.1, csstype@^3.1.3:
+csstype@^3.1.0, csstype@^3.1.1, csstype@^3.1.3:
   version "3.1.3"
   resolved "https://registry.npmmirror.com/csstype/-/csstype-3.1.3.tgz"
   integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
@@ -2130,6 +2149,11 @@ mlly@^1.2.0, mlly@^1.4.2:
     pkg-types "^1.0.3"
     ufo "^1.3.0"
 
+moment@^2.30.1, moment@>=2.24.0:
+  version "2.30.1"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.30.1.tgz"
+  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+
 ms@2.1.2:
   version "2.1.2"
   resolved "https://registry.npmmirror.com/ms/-/ms-2.1.2.tgz"
@@ -2407,7 +2431,7 @@ postcss-selector-parser@^6.0.13:
     cssesc "^3.0.0"
     util-deprecate "^1.0.2"
 
-postcss@^8.4.32, postcss@^8.4.33:
+postcss@^8.4.14, postcss@^8.4.32, postcss@^8.4.33:
   version "8.4.33"
   resolved "https://registry.npmmirror.com/postcss/-/postcss-8.4.33.tgz"
   integrity sha512-Kkpbhhdjw2qQs2O2DGX+8m5OVqEcbB9HRBvuYM9pgrjEFUg30A9LmXNlTAUj4S9kgtGyrMbTzVjH7E+s5Re2yg==
@@ -2420,6 +2444,11 @@ prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmmirror.com/prelude-ls/-/prelude-ls-1.2.1.tgz"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+
+"prettier@^1.18.2 || ^2.0.0":
+  version "2.8.8"
+  resolved "https://registry.npmjs.org/prettier/-/prettier-2.8.8.tgz"
+  integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
 
 pretty-format@^29.7.0:
   version "29.7.0"
@@ -2681,7 +2710,7 @@ source-map-support@~0.5.20:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map@^0.6.0, source-map@~0.6.0:
+source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0:
   version "0.6.1"
   resolved "https://registry.npmmirror.com/source-map/-/source-map-0.6.1.tgz"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
@@ -3066,10 +3095,10 @@ vite-node@1.1.3:
     picocolors "^1.0.0"
     vite "^5.0.0"
 
-"vite@^4.0.0 || ^5.0.0", vite@^5.0.0, vite@^5.0.10:
-  version "5.0.11"
-  resolved "https://registry.npmmirror.com/vite/-/vite-5.0.11.tgz"
-  integrity sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==
+"vite@^4.0.0 || ^5.0.0", vite@^5.0.0, vite@^5.0.12:
+  version "5.0.12"
+  resolved "https://registry.npmjs.org/vite/-/vite-5.0.12.tgz"
+  integrity sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==
   dependencies:
     esbuild "^0.19.3"
     postcss "^8.4.32"
@@ -3157,6 +3186,14 @@ vue-types@^3.0.0:
   integrity sha512-IwUC0Aq2zwaXqy74h4WCvFCUtoV0iSWr0snWnE9TnU18S66GAQyqQbRf2qfJtUuiFsBf6qp0MEwdonlwznlcrw==
   dependencies:
     is-plain-object "3.0.1"
+
+vue@^2.6.10:
+  version "2.7.16"
+  resolved "https://registry.npmjs.org/vue/-/vue-2.7.16.tgz"
+  integrity sha512-4gCtFXaAA3zYZdTp5s4Hl2sozuySsgz4jy1EnpBHNfpMa9dK1ZCG7viqBPCwXtmgc8nHqUsAu3G4gtmXkkY3Sw==
+  dependencies:
+    "@vue/compiler-sfc" "2.7.16"
+    csstype "^3.1.0"
 
 "vue@^2.6.14 || ^3.3.0", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", vue@^3.0.1, vue@^3.2.0, vue@^3.2.25, vue@^3.4.15, vue@>=3.0.3, vue@>=3.2.0, "vue@2 || 3", vue@3.4.15:
   version "3.4.15"

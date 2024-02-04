@@ -46,6 +46,7 @@ import type { Options } from 'ant-design-vue/es/_util/cssinjs/transformers/px2re
 import { usePostInfoData } from '@/stores/postinfo';
 import { Empty } from 'ant-design-vue';
 import type { DrawerProps } from 'ant-design-vue';
+const route = useRoute();
 
 const simpleImage = Empty.PRESENTED_IMAGE_SIMPLE;
 const H = h;
@@ -156,6 +157,7 @@ function search(value: string) {
 const handleSearch = (val: string) => {
     search(val)
 };
+
 const handleChange = (val: string) => {
     if (searchValue.value === undefined) {
         initData();
@@ -163,14 +165,32 @@ const handleChange = (val: string) => {
         console.log(postInfoStore.postInfoData);
     } else {
         searchValue.value = val || '';
-        getPostById(val).then((res: { data: PostInfo }) => {
-            titleValue.value = res.data.post_caption;
-            textValue.value = res.data.post_text;
-            postInfoStore.$patch({ postInfoData: res.data });
-        })
+        searchPostInfo(val);
     }
 
 };
+
+const searchPostInfo = (val: string) => {
+    return getPostById(val).then((res: { data: PostInfo }) => {
+        if (res.data) {
+            const { post_caption, post_text } = res.data;
+            searchValue.value = post_caption;
+            titleValue.value = post_caption;
+            textValue.value = post_text;
+            postInfoStore.$patch({ postInfoData: res.data });
+        } else {
+            openNotification('bottomRight', '查询失败', '该话题已删除')
+        }
+
+    });
+}
+
+onMounted(() => {
+    const id = route.query.id as string;
+    if(id){
+        searchPostInfo(id);
+    }
+})
 
 
 </script>

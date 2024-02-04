@@ -6,6 +6,8 @@ const { UserModel } = require('../models/user');
 const { ForumPostModel } = require('../models/forumPost');
 const { FINDUSERINFOFAIL, SUCCESSCALLBACK, DELETEBYIDFAIL, SEARCHBYNAMEFAIL, SEARCHBYIDFAIL, EDITBYBYIDFAIL } = require('../error/codeCollection');
 const { getErrorReason, errorData } = require('../public/javascripts/errorReason');
+/** 添加操作记录 */
+const { OperationModel } = require('../models/operation');
 
 /** 获取用户信息 */
 router.get('/userInfo', checkSessionMiddleware, checkTokenMiddleware, function (req, res, next) {
@@ -21,6 +23,8 @@ router.get('/userInfo', checkSessionMiddleware, checkTokenMiddleware, function (
 /** 添加话题 */
 router.post('/postinfo/add', checkTokenMiddleware, function (req, res, next) {
   ForumPostModel.insertMany(req.body).then((data) => {
+    const { user_id, _id } = data[0];
+    OperationModel.insertMany({ user_id: user_id, post_id: _id, operation: 'add' }).then();
     res.json(SUCCESSCALLBACK(data))
   }).catch(err => {
     let firstError = Object.values(getErrorReason(err))[0]
@@ -61,7 +65,10 @@ router.get('/postinfo/findhot', checkTokenMiddleware, function (req, res, next) 
 
 /** 修改话题 */
 router.post('/postinfo/edit', checkTokenMiddleware, function (req, res, next) {
-  ForumPostModel.updateOne({ _id: req.body.post_id, user_id: req.user._id }, { post_caption: req.body.post_caption, post_text: req.body.post_text }).then((data) => {
+  const post_id = req.body.post_id;
+  const user_id = req.user._id;
+  ForumPostModel.updateOne({ _id: post_id, user_id: user_id }, { post_caption: req.body.post_caption, post_text: req.body.post_text }).then((data) => {
+    OperationModel.insertMany({ user_id: user_id, post_id: post_id, operation: 'update' }).then();
     res.json(SUCCESSCALLBACK(data))
   }).catch(() => {
     res.json(EDITBYBYIDFAIL)
@@ -70,12 +77,33 @@ router.post('/postinfo/edit', checkTokenMiddleware, function (req, res, next) {
 
 /** 删除话题 */
 router.get('/postinfo/delete', checkTokenMiddleware, function (req, res, next) {
-  ForumPostModel.updateOne({ _id: req.query?.id, user_id: req.user._id }, { isDelete: true }).then((data) => {
+  const post_id = req.query?.id;
+  const user_id = req.user._id;
+  ForumPostModel.updateOne({ _id: post_id, user_id: user_id }, { isDelete: true }).then((data) => {
+    OperationModel.insertMany({ user_id: user_id, post_id: post_id, operation: 'delete' }).then();
     res.json(SUCCESSCALLBACK(data))
   }).catch(() => {
     res.json(DELETEBYIDFAIL)
   })
 });
 
+/** 恢复删除的话题 */
+router.get('/postinfo/recover', checkTokenMiddleware, function (req, res, next) {
+  const post_id = req.query?.id;
+  const user_id = req.user._id;
+  ForumPostModel.updateOne({ _id: post_id, user_id: user_id }, { isDelete: false }).then((data) => {
+    OperationModel.insertMany({ user_id: user_id, post_id: post_id, operation: 'recover' }).then();
+    res.json(SUCCESSCALLBACK(data))
+  }).catch(() => {
+    res.json(DELETEBYIDFAIL)
+  })
+});
+
+/** 获取操作记录 */
+router.get('/postinfo/operation', checkTokenMiddleware, function (req, res, next) {
+  OperationModel.find({user_id: req.user._id}).populate('post_id').then(data=>{
+    res.json(data)
+  })
+});
 
 module.exports = router;

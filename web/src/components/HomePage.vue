@@ -9,15 +9,15 @@
             <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
                 <a-menu-item key="post">
                     <BarsOutlined />
-                    <span>nav 1</span>
+                    <span>话题管理</span>
                 </a-menu-item>
-                <a-menu-item key="post1">
+                <a-menu-item key="record">
                     <video-camera-outlined />
-                    <span>nav 2</span>
+                    <span>操作记录</span>
                 </a-menu-item>
                 <a-menu-item key="post2">
                     <upload-outlined />
-                    <span>nav 3</span>
+                    <span>还没想好</span>
                 </a-menu-item>
             </a-menu>
         </a-layout-sider>
@@ -51,6 +51,8 @@ import { fadeColorMap } from '../untils/fadeColor';
 import { useUserInfoStore } from '@/stores/userInfo';
 import router from '@/router';
 import { getPostByHottest } from '@/service/postInfo';
+
+const route = useRoute();
 const selectedKeys = ref<string[]>(['post']);
 const collapsed = ref<boolean>(false);
 const userInfoStore = useUserInfoStore().userInfoData;
@@ -97,11 +99,18 @@ const modern = () => {
 };
 
 function fetchPostInfoHotData() {
-    animationValue.value = (`${modern()}，${userInfoStore.nickname}`);
-    return getPostByHottest().then(res => res.data);
+    animationValue.value = (`${modern()}，${userInfoStore.nickname} ${userInfoStore.sex === 'man' ? '先生': '女士'}`);
+    return getPostByHottest().then(res => {
+        if(modern()==='深夜好'){
+            res.data.unshift({id: 0, post_caption: '没事早点睡吧，心里已经很变态了！身体一定要健康。'})
+        }
+        return res.data
+    });
 }
 
 onMounted(() => {
+    selectedKeys.value = [`${route.path.split('/').at(-1)}`]
+    
     fetchPostInfoHotData().then((data) => {
         function updateAnimationValue() {
             if (count.value === 10) {

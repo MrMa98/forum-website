@@ -41,4 +41,13 @@ export interface PostInfo {
     _id: string;
   }
 
+  export interface OperationLog {
+    _id: string,
+    user_id: string,
+    post_id: PostInfo,
+    operation: 'add' | 'update' | 'delete' | 'recover',
+    __v: number,
+    operation_at: Date,
+}
+
 

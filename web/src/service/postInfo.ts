@@ -23,6 +23,14 @@ export function deletePostById(id: string) {
   return http.get(`/api/postinfo/delete?id=${id}`)
 }
 
+export function recoverPostById(id: string) {
+  return http.get(`/api/postinfo/recover?id=${id}`)
+}
+
 export function getPostByHottest() {
-  return http.get(`/api/postinfo/findhot`)
+  return http.get('/api/postinfo/findhot')
+}
+
+export function getOperationLog() {
+  return http.get('/api/postinfo/operation')
 }

@@ -16,7 +16,11 @@ const router = createRouter({
       children: [
         {
           path: 'post',
-          component: () => import('../components/postManage.vue'),
+          component: () => import('../components/PostManage.vue'),
+        },
+        {
+          path: 'record',
+          component: () => import('../components/OperationRecord.vue'),
         },
       ]
     },
