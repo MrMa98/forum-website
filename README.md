@@ -8,12 +8,15 @@
 
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/401a2d49-dbba-4104-84d7-cd54a37b7cb3)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/dd3ea58d-c048-441b-908b-fd8eaeb00347)
-![image](https://github.com/MrMa98/forum-website/assets/73485208/42b59785-dbfd-4802-b9fc-18c1e8b47c7c)
-![image](https://github.com/MrMa98/forum-website/assets/73485208/3788699c-b65b-4b47-bcc5-c10b28cccde3)
+<img width="1280" alt="Snipaste_2024-02-19_22-24-41" src="https://github.com/MrMa98/forum-website/assets/73485208/ecda49d1-5ee5-4caa-ad8a-f10ea05991b9">
+<img width="1280" alt="Snipaste_2024-02-19_22-24-48" src="https://github.com/MrMa98/forum-website/assets/73485208/fd5a3709-10c1-4704-b256-c772b4fe7f37">
+<img width="1280" alt="Snipaste_2024-02-19_22-22-30" src="https://github.com/MrMa98/forum-website/assets/73485208/39afc7a9-bc0b-4cba-a2ef-ba408ad1caa3">
+<img width="1280" alt="Snipaste_2024-02-19_22-22-45" src="https://github.com/MrMa98/forum-website/assets/73485208/0adf397d-cea6-4133-bf04-f311c19f588e">
+<img width="1280" alt="Snipaste_2024-02-19_22-22-07" src="https://github.com/MrMa98/forum-website/assets/73485208/3b1eb36a-253a-4162-8fe0-fec3b9da9722">
+<img width="1280" alt="Snipaste_2024-02-19_23-04-03" src="https://github.com/MrMa98/forum-website/assets/73485208/dfb8475c-0281-42da-b46a-4194e3461e99">
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/13657cb4-a6eb-4115-9b04-d7afe37221cf)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/9a661161-da9f-4e87-893a-f152c20acaaa)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/615262e1-7e14-447e-b17a-126709253d30)
-
 
 
 
