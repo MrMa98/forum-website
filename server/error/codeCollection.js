@@ -65,6 +65,36 @@ module.exports = {
         message: '请选择要修改的话题',
         data: null,
     },
+    /** 恢复失败该话题已存在 */
+    RECOVERBYBYIDFAIL: {
+        code: 2035,
+        message: '恢复失败该话题已存在',
+        data: null,
+    },
+    /** 添加标签失败 */
+    ADDTAGFAIL: {
+        code: 2036,
+        message: '服务器问题，添加标签失败',
+        data: null,
+    },
+    /** 添加标签与默认标签相同 */
+    ADDDEFAULTTAGFAIL: {
+        code: 2037,
+        message: '添加标签失败，添加标签与默认标签相同',
+        data: null,
+    },
+    /** 服务器异常获取用户信息失败 */
+    FINDPOSTINFOFAIL: {
+        code: 2038,
+        message: '服务器异常获取话题信息失败',
+        data: null,
+    },
+    /** 服务器异常评论失败 */
+    ADDCOMMENTFAIL: {
+        code: 2039,
+        message: '服务器异常评论失败',
+        data: null,
+    },
     /**
      * 返回成功的响应对象
      * @param {string} token 用户登录状态的 token 字段

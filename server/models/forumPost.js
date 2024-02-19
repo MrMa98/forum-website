@@ -21,6 +21,9 @@ const ForumPostModel = mongoose.model('ForumPostModel', new mongoose.Schema({
             message: '请添加内容'
         },
     },
+    post_type: [{
+        type: String,
+    }],
     create_at: {
         type: Date,
         default: Date.now,

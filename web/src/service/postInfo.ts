@@ -1,4 +1,4 @@
-import type { AddPostInfo, UpdatePostInfo } from '@/untils/type'
+import type { AddPostInfo, GetPostParams, UpdatePostInfo } from '@/untils/type'
 import http from '../untils/axios'
 
 /** 添加帖子 */
@@ -12,6 +12,10 @@ export function getPostByName(params: string) {
 
 export function getPostById(params: string) {
   return http.get(`/api/postinfo/findid?search=${params}`)
+}
+
+export function getPostAllById(params: string) {
+  return http.get(`/api/postinfo/findid/all?search=${params}`)
 }
 
 export function updatePostById(params: UpdatePostInfo) {
@@ -33,4 +37,8 @@ export function getPostByHottest() {
 
 export function getOperationLog() {
   return http.get('/api/postinfo/operation')
+}
+
+export function getPostAll(params: GetPostParams) {
+  return http.post('/api/postinfo/all', params)
 }

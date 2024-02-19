@@ -94,7 +94,16 @@ const UserModel = mongoose.model('UserModel', new mongoose.Schema({    // 定义
         type: Date,
         default: Date.now,
     },
+    custom_type: [{
+        type: String,
+    }],
+    friend: [{
+        type: mongoose.Schema.Types.ObjectId,
+    }],
     updated_at: Date,
+    avatar: {
+        type: Buffer,
+    }
 }));
 
 module.exports = { UserModel };

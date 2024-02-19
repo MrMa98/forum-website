@@ -54,8 +54,8 @@ import type { OperationLog } from '@/untils/type';
 import { PlusCircleOutlined, EditOutlined, DeleteOutlined, SyncOutlined } from '@ant-design/icons-vue';
 import moment from 'moment';
 import { Empty } from 'ant-design-vue';
+import { useSidebarInfo } from '@/stores/sidebar';
 const simpleImage = Empty.PRESENTED_IMAGE_SIMPLE;
-const router = useRouter();
 const el = ref<HTMLInputElement | null>(null)
 
 const time = (date: Date) => {
@@ -87,10 +87,8 @@ const confirm = (id: string, operation: 'add' | 'update' | 'delete' | 'recover')
             let isError = Boolean(data);
             openNotification('bottomRight', '恢复成功', '', false, isError);
         });
-    } else {
-        router.push(`/home/post?id=${id}`);
     }
-
+    useSidebarInfo().$patch({sidebarKey: ['post'], post_id: id});
 };
 
 const deleteConfirm = () => {
@@ -98,8 +96,8 @@ const deleteConfirm = () => {
 }
 
 async function operation() {
-    const data = await getOperationLog();
-    Object.assign(operationArr, data);
+    const res = await getOperationLog();
+    Object.assign(operationArr, res.data);
     await nextTick();
     const element = document.getElementsByClassName('operation')[0]
     element.scrollTop = element.scrollHeight;

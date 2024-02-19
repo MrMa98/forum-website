@@ -4,12 +4,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
-      name: 'Login',
-      component: () => import('../components/LoginPage.vue'),
-      props: { mode: 'login' }
-    },
-    {
       path: '/home',
       name: 'Home',
       component: () => import('../components/HomePage.vue'),
@@ -22,7 +16,22 @@ const router = createRouter({
           path: 'record',
           component: () => import('../components/OperationRecord.vue'),
         },
+        {
+          path: 'forum',
+          component: () => import('../components/TopicForum.vue'),
+        },
       ]
+    },
+    {
+      path: '/detail/:id',
+      name: 'Detail',
+      component: () => import('../components/TopicDetail.vue'),
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: () => import('../components/LoginPage.vue'),
+      props: { mode: 'login' }
     },
     {
       path: '/register',

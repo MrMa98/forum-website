@@ -5,12 +5,14 @@ export const useUserInfoStore = defineStore('userInfo', () => {
         username: '',
         sex: '',
         nickname: '',
+        email: '',
+        phone: '',
+        birthday: '',
+        address: '',
         _id: '',
+        avatar: '',
     });
-    function userInfoActions() {
-        console.log(userInfoData);
-    }
-    return { userInfoData, userInfoActions }
+    return { userInfoData }
 }, {
     persist: {
         storage: localStorage,

@@ -11,7 +11,8 @@ export const usePostInfoData = defineStore('postInfo', () => {
         post_text: '',
         user_id: '',
         __v: 0,
-        _id: ''
+        _id: '',
+        post_type: [],
     });
 
     const reset = () => {
@@ -24,7 +25,8 @@ export const usePostInfoData = defineStore('postInfo', () => {
             post_text: '',
             user_id: '',
             __v: 0,
-            _id: ''
+            _id: '',
+            post_type: [],
         });
     }
 

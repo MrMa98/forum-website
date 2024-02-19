@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 import { login, userRegister } from '../service/login.js';
-import type { Login, Users } from '@/untils/type';
+import type { Login, Users, UserInfoStore } from '@/untils/type';
 import { LeftCircleFilled } from '@ant-design/icons-vue';
 import { RadiusBottomrightOutlined } from '@ant-design/icons-vue';
 import { openNotification } from '../untils/antvNotification';
@@ -157,9 +157,9 @@ const onFinish = (values: LoginFormState) => {
 
   login(params)
     .then((response) => {
-      const { token, message, data } = response as unknown as { token: string, message: string, data: Users };
+      const { token, message, data } = response as unknown as { token: string, message: string, data: UserInfoStore };
       if (token) {
-        store.$patch({userInfoData: data});
+        store.$patch({ userInfoData: data });
         localStorage.setItem('token', token);
         router.push({ path: '/home', replace: true });
         openNotification('bottomRight', '登录成功', '欢迎', false);
@@ -192,7 +192,7 @@ const blackLogin = () => {
 /** 注册 */
 const register = () => {
   userRegister({ ...registerFormState }).then((response) => {
-    const { token, message } = response as unknown as {token: string, message: string};
+    const { token, message } = response as unknown as { token: string, message: string };
     if (token) {
       router.push({ path: '/home', replace: true });
       openNotification('bottomRight', '注册成功', '欢迎', false);

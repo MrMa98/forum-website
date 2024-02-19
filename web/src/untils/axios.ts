@@ -34,12 +34,10 @@ http.interceptors.response.use(function (response) {
 
   if (errorMap.has(code) && !errorMap.get(code).route) {
     openNotification('bottomRight', 'error', message);
-    return false;
   }
 
   if (code == 9999) {
     openNotification('bottomRight', '失败', message);
-    return false;
   }
 
   return response.data;

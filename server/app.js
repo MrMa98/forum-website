@@ -11,6 +11,7 @@ var registerRouter = require('./routes/register');
 const cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const fileUpload = require('express-fileupload');
 
 var app = express();
 
@@ -48,7 +49,10 @@ app.use(session({
     secure: false,
     maxAge: 1000 * 60 * 60 * 60
   }
-}))
+}));
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 app.use('/api', indexRouter);
 app.use('/user', loginRouter);
