@@ -11,6 +11,10 @@
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/42b59785-dbfd-4802-b9fc-18c1e8b47c7c)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/3788699c-b65b-4b47-bcc5-c10b28cccde3)
 ![image](https://github.com/MrMa98/forum-website/assets/73485208/13657cb4-a6eb-4115-9b04-d7afe37221cf)
+![image](https://github.com/MrMa98/forum-website/assets/73485208/9a661161-da9f-4e87-893a-f152c20acaaa)
+![image](https://github.com/MrMa98/forum-website/assets/73485208/615262e1-7e14-447e-b17a-126709253d30)
+
+
 
 
 
